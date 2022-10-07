@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package com.demoqa;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormOriginal {
+public class PracticeForm {
     @BeforeAll
     static void setUp() {
         Configuration.baseUrl = "https://demoqa.com";
@@ -19,8 +19,6 @@ public class PracticeFormOriginal {
     @Test
     void testForm() {
         open("/automation-practice-form");
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
         $("#firstName").setValue("Andrey");
         $("#lastName").setValue("Izvekov");
         $("#userEmail").setValue("mailtest@mail.com");
@@ -33,11 +31,18 @@ public class PracticeFormOriginal {
         $("#subjectsInput").setValue("Computer Science").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("1.jpeg");
+
         $("#currentAddress").setValue("Address, Street, Building");
+
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
+
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
+
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
