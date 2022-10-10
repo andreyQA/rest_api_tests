@@ -4,6 +4,9 @@ import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.PracticeFormPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static com.demoqa.testData.RegistrationData.*;
+
 public class PracticeForm {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
     @BeforeAll
@@ -17,30 +20,30 @@ public class PracticeForm {
     void testForm() {
         //Fill form
         practiceFormPage.openPage()
-        .setFirstName("Andrey")
-        .setLastName("Izvekov")
-        .setEmail("mailtest@mail.com")
-        .setGender("Male")
-        .setNumber("1234567890")
-        .setBirthDate("10", "January", "1989")
-        .setSubject("Computer Science")
-        .setHobbies("Sports")
-        .setPicture("1.jpeg")
-        .setAddress("Address, Street, Building")
-        .setState("NCR")
-        .setCity("Delhi")
+        .setFirstName(firstName)
+        .setLastName(lastName)
+        .setEmail(email)
+        .setGender(gender)
+        .setNumber(phone)
+        .setBirthDate(day, month, year)
+        .setSubject(subject)
+        .setHobbies(hobby)
+        .setPicture(picture)
+        .setAddress(address)
+        .setState(state)
+        .setCity(city)
         .submitForm()
         //Check submitted form
         .checkModalTableVisible()
-        .checkModalTableResult("Student Name","Andrey Izvekov")
-        .checkModalTableResult("Student Email", "mailtest@mail.com")
-        .checkModalTableResult("Gender", "Male")
-        .checkModalTableResult("Mobile","1234567890")
-        .checkModalTableResult("Date of Birth", "10 January,1989")
-        .checkModalTableResult("Subjects", "Computer Science")
-        .checkModalTableResult("Hobbies", "Sports")
-        .checkModalTableResult("Picture", "1.jpeg")
-        .checkModalTableResult("Address", "Address, Street, Building")
-        .checkModalTableResult("State and City", "NCR Delhi");
+        .checkModalTableResult("Student Name",firstName + " " + lastName)
+        .checkModalTableResult("Student Email", email)
+        .checkModalTableResult("Gender", gender)
+        .checkModalTableResult("Mobile",phone)
+        .checkModalTableResult("Date of Birth", birthday)
+        .checkModalTableResult("Subjects", subject)
+        .checkModalTableResult("Hobbies", hobby)
+        .checkModalTableResult("Picture", picture)
+        .checkModalTableResult("Address", address)
+        .checkModalTableResult("State and City", state + " " + city);
     }
 }
