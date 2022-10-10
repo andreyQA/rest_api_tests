@@ -13,7 +13,7 @@ public class RegistrationData {
             email = faker.internet().safeEmailAddress(),
             gender = faker.demographic().sex(),
             phone = faker.phoneNumber().subscriberNumber(10),
-            day = String.valueOf(faker.number().numberBetween(1,31)),
+            day = String.format("%02d", faker.number().numberBetween(1,28)),
             month = RandomUtils.getRandomMonth(),
             year= String.valueOf(faker.number().numberBetween(1920,2004)),
             address = faker.address().fullAddress(),

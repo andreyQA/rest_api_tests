@@ -30,7 +30,7 @@ public class RandomUtils {
     }
     public static String getRandomState() {
         List<String> state = Arrays.asList(
-                "NCR", "Uttar Pradesh", "Haryara", "Rajasthan");
+                "NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
         return state.get(new Random().nextInt(state.size()));
 
     }
@@ -48,7 +48,7 @@ public class RandomUtils {
                 return city.get(new Random().nextInt(city.size()));
 
             }
-            case "Haryara": {
+            case "Haryana": {
                 List<String> city = Arrays.asList(
                         "Karnal", "Panipat");
                 return city.get(new Random().nextInt(city.size()));
