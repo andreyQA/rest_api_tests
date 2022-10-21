@@ -1,6 +1,7 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.PracticeFormPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.demoqa.testData.RegistrationData.*;
@@ -9,6 +10,7 @@ public class PracticeForm extends BaseConfig{
     PracticeFormPage practiceFormPage = new PracticeFormPage();
 
     @Test
+    @DisplayName("Тест формы")
     void testForm() {
         //Fill form
         practiceFormPage.openPage()
