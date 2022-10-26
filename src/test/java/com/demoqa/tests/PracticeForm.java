@@ -1,6 +1,9 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.PracticeFormPage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,10 +11,15 @@ import static com.demoqa.testData.RegistrationData.*;
 
 public class PracticeForm extends BaseConfig{
     PracticeFormPage practiceFormPage = new PracticeFormPage();
-
     @Test
+    @Feature("Тестище фича")
+    @Story("тестище стори")
     @DisplayName("Тест формы")
+    @Owner("Andrey I")
     void testForm() {
+//        System.setProperty("browser","chrome");
+//        String browserName = System.getProperty("browser");
+//        System.out.println(browserName);
         //Fill form
         practiceFormPage.openPage()
         .setFirstName(firstName)
