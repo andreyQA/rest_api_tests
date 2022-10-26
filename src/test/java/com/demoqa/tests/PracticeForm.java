@@ -17,9 +17,6 @@ public class PracticeForm extends BaseConfig{
     @DisplayName("Тест формы")
     @Owner("Andrey I")
     void testForm() {
-//        System.setProperty("browser","chrome");
-//        String browserName = System.getProperty("browser");
-//        System.out.println(browserName);
         //Fill form
         practiceFormPage.openPage()
         .setFirstName(firstName)
