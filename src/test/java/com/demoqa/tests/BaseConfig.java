@@ -19,12 +19,15 @@ public class BaseConfig {
         //Configuration.browserSize = "1920x1080";
         //System.setProperty("browser","chrome");
         String browserName = System.getProperty("browser", "chrome");
+        Configuration.browser = browserName;
 
         //System.setProperty("browser_version","105");
         String browserVersion = System.getProperty("browser_version", "100");
+        Configuration.browserVersion = browserVersion;
 
         //System.setProperty("browser_size","1920x1080");
         String browserSize = System.getProperty("browser_size","800x600");
+        Configuration.browserSize = browserSize;
 
         String remoteUrl = System.getProperty("remote_url");
         if (remoteUrl != null) {
