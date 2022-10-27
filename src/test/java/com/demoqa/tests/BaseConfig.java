@@ -17,25 +17,23 @@ public class BaseConfig {
         Configuration.holdBrowserOpen = false;
 
         //System.setProperty("browser","chrome");
-        String browserName = System.getProperty("browser", "chrome");
-        Configuration.browser = browserName;
+        Configuration.browser = System.getProperty("browser", "chrome");
 
         //System.setProperty("browser_version","105");
-        String browserVersion = System.getProperty("browser_version", "100");
-        Configuration.browserVersion = browserVersion;
+        Configuration.browserVersion = System.getProperty("browser_version", "100");
 
         //System.setProperty("browser_size","1920x1080");
-        String browserSize = System.getProperty("browser_size","800x600");
-        Configuration.browserSize = browserSize;
+        Configuration.browserSize = System.getProperty("browser_size","800x600");
 
         String remoteUrl = System.getProperty("remote_url");
         if (remoteUrl != null) {
             Configuration.remote = remoteUrl;
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            Configuration.browserCapabilities = capabilities;
         }
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
+
 
     }
     @AfterEach
