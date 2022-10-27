@@ -16,12 +16,6 @@ public class BaseConfig {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = false;
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
-
-        //Configuration.browserSize = "1920x1080";
         //System.setProperty("browser","chrome");
         String browserName = System.getProperty("browser", "chrome");
         Configuration.browser = browserName;
@@ -38,6 +32,10 @@ public class BaseConfig {
         if (remoteUrl != null) {
             Configuration.remote = remoteUrl;
         }
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
 
     }
     @AfterEach
