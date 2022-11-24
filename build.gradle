@@ -10,7 +10,8 @@ dependencies {
     testImplementation (
             "com.codeborne:selenide:6.10.1",
             "org.junit.jupiter:junit-jupiter:5.9.1",
-            "io.rest-assured:rest-assured:5.3.0"
+            "io.rest-assured:rest-assured:5.3.0",
+            "com.github.javafaker:javafaker:1.0.2"
     )
 }
 

@@ -1,9 +1,8 @@
 package com.demoqa.tests;
 
-import io.restassured.http.ContentType;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.*;
 
@@ -18,11 +17,11 @@ public class TestRestAPI {
     }
     @Test
     void checkCreateUserWithParameters() {
-        String data = "{\n" +
-                "    \"name\": \"username\",\n" +
-                "    \"job\": \"qa god\",\n" +
-                "    \"random\": \"blablabla\"\n" +
-                "}";
+        Faker faker = new Faker();
+        String job = faker.job().position();
+        String name = faker.name().fullName();
+        String random = faker.random().toString();
+        String data = "{ \"name\": \"" +name + "\", \"job\": \"" + job + "\", \"random\": \"" + random + "\" }";
         given()
                 .contentType(JSON)
                 .body(data)
@@ -30,10 +29,10 @@ public class TestRestAPI {
                 .post("https://reqres.in/api/users")
                 .then()
                 .statusCode(201)
-                .body("id", not("null"),
-                        "name",notNullValue(),
-                        "job", notNullValue(),
-                        "random",notNullValue());
+                .body("id", notNullValue(),
+                        "name",is(name),
+                        "job", is(job),
+                        "random",is(random));
     }
     @Test
     void checkCountUsersPerPage() {
@@ -46,12 +45,14 @@ public class TestRestAPI {
     }
     @Test
     void checkNonexistentUserOnFirstPage() {
+        Faker faker = new Faker();
+        String email = faker.internet().emailAddress();
         given()
                 .when()
                 .get("https://reqres.in/api/users")
                 .then()
                 .statusCode(200)
-                .body("data.email", not("blablauser@mail.com"));
+                .body("data.email", not(email));
     }
     @Test
     void checkExistUserOnFirstPage() {
