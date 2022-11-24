@@ -27,10 +27,12 @@ repositories {
 dependencies {
     testImplementation (
             "com.codeborne:selenide:6.7.4",
+            "org.aspectj:aspectjweaver:1.9.6",
             "com.github.javafaker:javafaker:1.0.2",
             "org.junit.jupiter:junit-jupiter:5.9.0",
             "io.qameta.allure:allure-selenide:$allureVersion",
-            "org.slf4j:slf4j-simple:$slf4jVersion"
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "org.assertj:assertj-core:3.19.0"
     )
 }
 tasks.withType(Test) {
