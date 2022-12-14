@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package tests;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.*;
 
-public class TestRestAPI {
+public class TestRestApiOld {
     @Test
     void checkCreateUserWithoutParameters() {
         given()
